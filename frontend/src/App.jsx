@@ -121,7 +121,11 @@ function App() {
     return (
         <div className="app">
             <header className="app-header">
-                <h1>Anomaly Expense Tracker</h1>
+                <div className="app-header-left">
+                    <div className="app-header-title">
+                        <h1>Expense Tracker</h1>
+                    </div>
+                </div>
             </header>
 
             <main className="app-main">
@@ -134,35 +138,32 @@ function App() {
                 </section>
 
                 <section className="expense-list-section">
-                    <div className="expense-list-header">
-                        <h2>Expenses</h2>
+                    <div className="running-total-card">
+                        <div className="running-total-header">
+                            <span className="running-total-label">Running Total</span>
+                            <CurrencySelector
+                                value={homeCurrency}
+                                onChange={setHomeCurrency}
+                            />
+                        </div>
 
-                        <CurrencySelector
-                            value={homeCurrency}
-                            onChange={setHomeCurrency}
-                        />
-                    </div>
-
-                    <div className="expense-total">
-                        <span>Total</span>
-
-                        <strong>
+                        <p className="running-total-amount">
                             {conversionLoading
                                 ? "Calculating..."
-                                : `${total.toFixed(2)} ${homeCurrency}`}
-                        </strong>
+                                : `${homeCurrency} ${total.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
+                        </p>
+
+                        <p className="running-total-subtitle">
+                            {expenses.length} {expenses.length === 1 ? 'expense' : 'expenses'}
+                        </p>
                     </div>
 
-                    {loading && <p>Loading expenses...</p>}
+                    {loading && <p className="loading-text">Loading expenses...</p>}
 
-                    {error && <p>{error}</p>}
+                    {error && <p className="expense-list-error">{error}</p>}
 
                     {!loading && !error && (
                         <>
-                            {conversionLoading && (
-                                <p>Converting expenses...</p>
-                            )}
-
                             {conversionError && (
                                 <p className="conversion-error">
                                     {conversionError}

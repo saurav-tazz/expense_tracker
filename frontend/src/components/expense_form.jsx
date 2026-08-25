@@ -73,44 +73,46 @@ function ExpenseForm({ onExpenseAdded }) {
                 />
             </div>
 
-            <div className="form-group">
-                <label htmlFor="expense-amount">
-                    Amount
-                </label>
+            <div className="form-row">
+                <div className="form-group">
+                    <label htmlFor="expense-amount">
+                        Amount
+                    </label>
 
-                <input
-                    id="expense-amount"
-                    type="number"
-                    min="0"
-                    step="0.01"
-                    value={amount}
-                    onChange={(event) =>
-                        setAmount(event.target.value)
-                    }
-                    placeholder="e.g. 500"
-                    disabled={submitting}
-                />
-            </div>
+                    <input
+                        id="expense-amount"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        value={amount}
+                        onChange={(event) =>
+                            setAmount(event.target.value)
+                        }
+                        placeholder="0.00"
+                        disabled={submitting}
+                    />
+                </div>
 
-            <div className="form-group">
-                <label htmlFor="expense-currency">
-                    Currency
-                </label>
+                <div className="form-group">
+                    <label htmlFor="expense-currency">
+                        Currency
+                    </label>
 
-                <select
-                    id="expense-currency"
-                    value={currency}
-                    onChange={(event) =>
-                        setCurrency(event.target.value)
-                    }
-                    disabled={submitting}
-                >
-                    {currencies.map((item) => (
-                        <option key={item} value={item}>
-                            {item}
-                        </option>
-                    ))}
-                </select>
+                    <select
+                        id="expense-currency"
+                        value={currency}
+                        onChange={(event) =>
+                            setCurrency(event.target.value)
+                        }
+                        disabled={submitting}
+                    >
+                        {currencies.map((item) => (
+                            <option key={item} value={item}>
+                                {item}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </div>
 
             {error && (
@@ -120,6 +122,7 @@ function ExpenseForm({ onExpenseAdded }) {
             )}
 
             <button type="submit" disabled={submitting}>
+                <span>+</span>
                 {submitting ? "Adding..." : "Add Expense"}
             </button>
         </form>

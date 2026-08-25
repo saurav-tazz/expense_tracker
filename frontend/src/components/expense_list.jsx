@@ -55,25 +55,34 @@ function ExpenseList({
                     >
                         <div className="expense-item-details">
                             <h3>{expense.title}</h3>
-
-                            <p className="expense-original-amount">
-                                {expense.amount.toFixed(2)}{" "}
-                                {expense.currency}
+                            <p className="expense-item-date">
+                                {new Date(expense.date).toLocaleDateString('en-US', {
+                                    month: 'short',
+                                    day: 'numeric',
+                                    year: 'numeric'
+                                })}
                             </p>
+                        </div>
 
-                            <p className="converted-amount">
+                        <div className="expense-amounts">
+                            <span className="expense-original-amount">
+                                {expense.currency}{" "}
+                                {expense.amount.toLocaleString('en-US', {
+                                    minimumFractionDigits: 2,
+                                    maximumFractionDigits: 2
+                                })}
+                            </span>
+
+                            <span className="expense-arrow">→</span>
+
+                            <span className="expense-converted-amount">
                                 {convertedAmount !== undefined
-                                    ? `≈ ${convertedAmount.toFixed(
-                                          2
-                                      )} ${homeCurrency}`
-                                    : "Conversion unavailable"}
-                            </p>
-
-                            <small>
-                                {new Date(
-                                    expense.date
-                                ).toLocaleString()}
-                            </small>
+                                    ? `${homeCurrency} ${convertedAmount.toLocaleString('en-US', {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    })}`
+                                    : "—"}
+                            </span>
                         </div>
 
                         <button
