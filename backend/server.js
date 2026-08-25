@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
 const PORT = 5000;
@@ -8,6 +9,7 @@ let nextId = 1;
 
 const supportedCurrencies = ["USD", "NPR", "EUR", "INR", "GBP"];
 
+app.use(cors());
 app.use(express.json());
 
 
