@@ -253,6 +253,3 @@ The project intentionally keeps the architecture simple and uses React state and
 
 The backend acts as the intermediary between the frontend and the external exchange-rate service.
 
-## License
-
-This project was created as part of the Tech LeadHers Fellowship take-home assignment.
