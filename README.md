@@ -1,4 +1,4 @@
-# Anomaly Expense Tracker
+# Expense Tracker
 
 A small full-stack expense tracker that allows users to record expenses in different currencies, convert them into a selected home currency, and view a running total.
 

@@ -129,6 +129,9 @@ function App() {
             </header>
 
             <main className="app-main">
+                <p className="disclaimer-note" style={{fontSize: '0.8em', color: '#666', marginBottom: '1rem'}}>
+                    Note: This tool is for demonstration purposes only. Please do not use this for personal expense management.
+                </p>
                 <section className="expense-form-section">
                     <h2>Add Expense</h2>
 
